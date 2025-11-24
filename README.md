@@ -20,7 +20,7 @@ Aplicar conceptos fundamentales de búsqueda en estructuras de datos mediante la
 
 * Roberto Fabio Tercero Membreño
 
-## 🚀 Instrucciones de uso
+## Instrucciones de uso
 
 ### Requisitos previos
 * **SDK de .NET 8.0** o superior.
