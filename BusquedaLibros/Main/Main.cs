@@ -64,6 +64,102 @@ namespace BusquedaLibros.Main
 
             return entrada;
         }
+        static void BuscarLibrosExtremos()
+        {
+            var lista = libros.Libros;
+
+            if (lista == null || lista.Count == 0)
+            {
+                Console.WriteLine("No hay libros registrados para analizar.");
+                return;
+            }
+
+            Libro masReciente = lista[0];
+            Libro masAntiguo = lista[0];
+
+            // Recorremos para encontrar min y max
+            foreach (var libro in lista)
+            {
+                if (libro.FechaPublicacion > masReciente.FechaPublicacion)
+                    masReciente = libro;
+
+                if (libro.FechaPublicacion < masAntiguo.FechaPublicacion)
+                    masAntiguo = libro;
+            }
+
+            Console.WriteLine("=== Resultado del Análisis ===");
+            Console.WriteLine($"Libro más reciente: {masReciente.Nombre} ({masReciente.FechaPublicacion:yyyy-MM-dd})");
+            Console.WriteLine($"Libro más antiguo:  {masAntiguo.Nombre} ({masAntiguo.FechaPublicacion:yyyy-MM-dd})");
+        }
+        // Función auxiliar para buscar texto caracter por caracter (Estilo manual)
+        static bool ContieneManual(string textoFuente, string textoBusqueda)
+        {
+            // Validaciones básicas
+            if (string.IsNullOrEmpty(textoFuente) || string.IsNullOrEmpty(textoBusqueda))
+                return false;
+
+            if (textoBusqueda.Length > textoFuente.Length)
+                return false;
+
+            // Recorremos el texto fuente hasta donde cabe la palabra buscada
+            for (int i = 0; i <= textoFuente.Length - textoBusqueda.Length; i++)
+            {
+                bool coincidencia = true;
+
+                // Para cada posición, comprobamos si los siguientes caracteres coinciden
+                for (int j = 0; j < textoBusqueda.Length; j++)
+                {
+                    // Convertimos a minúsculas manualmente para ignorar mayúsculas
+                    char charFuente = char.ToLower(textoFuente[i + j]);
+                    char charBusqueda = char.ToLower(textoBusqueda[j]);
+
+                    if (charFuente != charBusqueda)
+                    {
+                        coincidencia = false;
+                        break; // Si una letra falla, pasamos a la siguiente posición de 'i'
+                    }
+                }
+
+                // Si terminamos el bucle interno y coincidencia sigue true, lo encontramos
+                if (coincidencia)
+                    return true;
+            }
+
+            return false;
+        }
+        static void BuscarEnDescripciones()
+        {
+            var lista = libros.Libros;
+
+            if (lista == null || lista.Count == 0)
+            {
+                Console.WriteLine("No hay libros registrados.");
+                return;
+            }
+
+            string termino = PedirTexto("Ingresa el texto a buscar en las descripciones: ");
+            bool encontrado = false;
+
+            Console.WriteLine($"\nResultados para '{termino}':");
+
+            for (int i = 0; i < lista.Count; i++)
+            {
+                Libro libro = lista[i];
+
+                // Usamos nuestra función manual en lugar de .Contains
+                if (ContieneManual(libro.Descripcion, termino))
+                {
+                    Console.WriteLine($"\n- Libro: {libro.Nombre}");
+                    Console.WriteLine($"  Descripción: {libro.Descripcion}");
+                    encontrado = true;
+                }
+            }
+
+            if (!encontrado)
+            {
+                Console.WriteLine("No se encontraron coincidencias.");
+            }
+        }
         static void ImprimirEditarListas()
         {
             Console.WriteLine("1. Añadir autor.");
@@ -331,6 +427,14 @@ namespace BusquedaLibros.Main
                                 {
                                     Console.WriteLine("Autor no encontrado.");
                                 }
+                                break;
+
+                            case 3: // Más reciente y más antiguo
+                                BuscarLibrosExtremos();
+                                break;
+
+                            case 4: // Buscar en descripciones
+                                BuscarEnDescripciones();
                                 break;
                         }
                         break;
