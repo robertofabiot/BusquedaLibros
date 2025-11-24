@@ -9,6 +9,46 @@ namespace BusquedaLibros.Main
     {
         public static AutorDAO autores = new AutorDAO();
         public static LibroDAO libros = new LibroDAO();
+        static void CargarPorDefecto()
+        {
+            Autor? autor; // Variable auxiliar reutilizable
+
+            // 1. Gabriel García Márquez
+            autores.AgregarAutor("Gabriel García Márquez");
+            autor = autores.Autores.Find(a => a.Nombre == "Gabriel García Márquez");
+            if (autor != null)
+            {
+                libros.AgregarLibro("Cien años de soledad", autor, new DateTime(1967, 5, 30), "Obra maestra del realismo mágico.");
+                libros.AgregarLibro("El amor en los tiempos del cólera", autor, new DateTime(1985, 1, 1), "Historia de amor.");
+            }
+
+            // 2. J.K. Rowling
+            autores.AgregarAutor("J.K. Rowling");
+            autor = autores.Autores.Find(a => a.Nombre == "J.K. Rowling");
+            if (autor != null)
+            {
+                libros.AgregarLibro("Harry Potter y la piedra filosofal", autor, new DateTime(1997, 6, 26), "Magia y aventuras.");
+            }
+
+            // 3. George Orwell
+            autores.AgregarAutor("George Orwell");
+            autor = autores.Autores.Find(a => a.Nombre == "George Orwell");
+            if (autor != null)
+            {
+                libros.AgregarLibro("1984", autor, new DateTime(1949, 6, 8), "Novela distópica sobre el control social.");
+                libros.AgregarLibro("Rebelión en la granja", autor, new DateTime(1945, 8, 17), "Sátira política.");
+            }
+
+            // 4. Isaac Asimov
+            autores.AgregarAutor("Isaac Asimov");
+            autor = autores.Autores.Find(a => a.Nombre == "Isaac Asimov");
+            if (autor != null)
+            {
+                libros.AgregarLibro("Yo, Robot", autor, new DateTime(1950, 12, 2), "Colección de relatos sobre robótica.");
+            }
+
+            Console.WriteLine(">> Datos iniciales cargados correctamente.\n");
+        }
         static string PedirTexto(string mensaje)
         {
             string entrada;
@@ -100,6 +140,7 @@ namespace BusquedaLibros.Main
 
         static void Main(string[] args)
         {
+            CargarPorDefecto();
             Console.WriteLine("Bienvenido al mejor gestor de libros del ayer y hoy.");
             while (true)
             {
@@ -274,6 +315,21 @@ namespace BusquedaLibros.Main
                                 if (!BusquedaLineal.BuscarPorNombre(libros, nombre))
                                 {
                                     Console.WriteLine("No encontrado.");
+                                }
+                                break;
+
+                            case 2: // Búsqueda binaria en lista de autores
+                                string nombreAutor = PedirTexto("Ingresa el nombre del autor a buscar: ");
+
+                                if (autores == null || autores.Autores.Count == 0)
+                                {
+                                    Console.WriteLine("No hay autores registrados.");
+                                    break;
+                                }
+
+                                if (!BusquedaBinaria.BuscarPorNombre(autores, nombreAutor))
+                                {
+                                    Console.WriteLine("Autor no encontrado.");
                                 }
                                 break;
                         }
