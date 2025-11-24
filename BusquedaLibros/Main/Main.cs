@@ -263,7 +263,54 @@ namespace BusquedaLibros.Main
                         break;
                     case 2:
                         ImprimirFuncionesBusqueda();
-                        Console.ReadLine();
+                        int opcionBusqueda = 0;
+                        try
+                        {
+                            Console.Write("Seleccione una opción: ");
+                            opcionBusqueda = Convert.ToInt32(Console.ReadLine() ?? "0");
+                        }
+                        catch (FormatException)
+                        {
+                            Console.WriteLine("Error: Por favor ingrese un número válido.");
+                            break;
+                        }
+
+                        switch (opcionBusqueda)
+                        {
+                            case 1: // Búsqueda lineal en una lista de libros
+                                Console.WriteLine("Ingresa el nombre del libro a buscar: ");
+                                string ?nombre = Console.ReadLine();
+
+                                if (nombre == null)
+                                {
+                                    Console.WriteLine("Entrada inválida.");
+                                    break;
+                                }
+
+                                nombre = nombre.Trim();
+
+                                // Validación: vacío o solo espacios
+                                if (nombre == "")
+                                {
+                                    Console.WriteLine("Debes ingresar un nombre.");
+                                    break;
+                                }
+
+                                // Validación: lista nula o vacía
+                                if (libros == null || libros.Libros.Count == 0)
+                                {
+                                    Console.WriteLine("No hay libros registrados.");
+                                    break;
+                                }
+
+                                // Llamada a la función real
+                                if (!BusquedaLineal.BuscarPorNombre(libros, nombre))
+                                {
+                                    Console.WriteLine("No encontrado.");
+                                }
+                                break;
+
+                        }
                         break;
                     case 3:
                         VerAutoresYLibros();
