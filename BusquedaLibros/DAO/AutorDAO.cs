@@ -11,33 +11,49 @@ namespace BusquedaLibros.DAO
     public class AutorDAO
     {
         private List<Autor> Autores = new List<Autor>();
-        private void AgregarAutor(string nombre)
+        public void AgregarAutor(string nombre)
         {
             Autor nuevoAutor = new Autor(nombre);
             Autores.Add(nuevoAutor);
         }
 
-        private bool EliminarAutor(string nombre)
+        public bool EliminarAutor(string nombre)
         {
             bool resultado = false;
-            Autor autorEliminado = new Autor(nombre);
             for (int i = 0; i < Autores.Count; i++)
             {
                 if (Autores[i].Nombre == nombre)
                 {
-                    Autores.Remove(autorEliminado);
+                    Autores.Remove(Autores[i]);
                     resultado = true;
                 }
             }
             return resultado;
         }
-        private string GetAutores()
+        public string GetAutores()
         {
-            string autores = "";
+            if (Autores.Count == 0) return "";
+            string autores = Autores[0].Nombre;
+            for (int i = 1; i < Autores.Count; i++)
+            {
+                autores += " ," + Autores[i].Nombre;
+            }
+            return autores;
+        }
+
+        public bool UpdateAutor(string nombreViejo, string nombreNuevo)
+        {
+            bool resultado = false;            
+
             for (int i = 0; i < Autores.Count; i++)
             {
-
+                if (Autores[i].Nombre == nombreViejo)
+                {
+                    Autores[i].Nombre = nombreNuevo;
+                    resultado = true;
+                }
             }
+            return resultado;
         }
     }
 }
