@@ -9,7 +9,7 @@ namespace BusquedaLibros.Main
 {
     public static class BusquedaBinaria
     {
-        public static int BuscarPorNombre(List<Libro> libros, string nombre)
+        public static int BuscarPorNombre(List<Autor> autores, string nombre)
         {
             return 0;
         }
