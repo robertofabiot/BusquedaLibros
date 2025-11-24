@@ -6,7 +6,7 @@ namespace BusquedaLibros.DAO
 {
     public class LibroDAO
     {
-        private List<Libro> Libros = new List<Libro>();
+        public List<Libro> Libros = new List<Libro>();
 
         public void AgregarLibro(string nombre, Autor autor, DateTime fechaPublicacion, string descripcion)
         {

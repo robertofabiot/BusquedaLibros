@@ -6,7 +6,7 @@ namespace BusquedaLibros.DAO
 {
     public class AutorDAO
     {
-        private List<Autor> Autores = new List<Autor>();
+        public List<Autor> Autores = new List<Autor>();
 
         public void AgregarAutor(string nombre)
         {

@@ -1,10 +1,41 @@
 ﻿using BusquedaLibros.DAO;
+using BusquedaLibros.Models;
 using System.Diagnostics;
+
 
 namespace BusquedaLibros.Main
 {
     internal class Program
     {
+        public static AutorDAO autores = new AutorDAO();
+        public static LibroDAO libros = new LibroDAO();
+
+        #region funciones de editar listas
+        static void AgregarAutor(string nombre)
+        {
+            autores.AgregarAutor(nombre);
+        }
+        static void EliminarAutor(string nombre)
+        {
+            autores.EliminarAutor(nombre);
+        }
+        static void ActualizarAutor(string nombreViejo, string nombreNuevo)
+        {
+            autores.UpdateAutor(nombreViejo, nombreNuevo);
+        }
+        static void AgregarLibro(string nombre, Autor autor, DateTime fecha, string descripcion)
+        {
+            libros.AgregarLibro(nombre, autor, fecha, descripcion);
+        }
+        static void EliminarLibro(string nombre)
+        {
+            libros.EliminarLibro(nombre);
+        }
+        static void ActualizarLibro(string nombreViejo, string nombreNuevo, Autor nuevoAutor, DateTime nuevaFecha, string nuevaDescripcion)
+        {
+            libros.UpdateLibro(nombreViejo, nombreNuevo, nuevoAutor, nuevaFecha, nuevaDescripcion);
+        }
+        #endregion
         static void ImprimirEditarListas()
         {
             Console.WriteLine("1. Añadir autor.");
@@ -40,7 +71,7 @@ namespace BusquedaLibros.Main
                     opcion = Convert.ToInt32(Console.ReadLine());
                     if (opcion < 1 || opcion > 3) throw new FormatException();
                 }
-                catch(FormatException)
+                catch (FormatException)
                 {
                     Console.WriteLine("Ingrese un número entero y válido.");
                 }
