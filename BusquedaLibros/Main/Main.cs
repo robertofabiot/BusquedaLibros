@@ -1,4 +1,4 @@
-﻿namespace BusquedaLibros
+﻿namespace BusquedaLibros.Main
 {
     internal class Program
     {
