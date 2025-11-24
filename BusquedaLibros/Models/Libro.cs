@@ -8,9 +8,16 @@ namespace BusquedaLibros.Models
 {
     public class Libro
     {
-        public required string Nombre { get; set; }
-        public required Autor Autor { get; set; }
-        public required DateTime FechaPublicacion { get; set; }
-        public required string Descripcion { get; set; }
+        public string Nombre { get; set; }
+        public Autor Autor { get; set; }
+        public DateTime FechaPublicacion { get; set; }
+        public string Descripcion { get; set; }
+        public Libro(string nombre, Autor autor, DateTime fechaPublicacion, string descripcion)
+        {
+            this.Nombre = nombre;
+            this.Autor = autor;
+            this.FechaPublicacion = fechaPublicacion;
+            this.Descripcion = descripcion;
+        }
     }
 }
