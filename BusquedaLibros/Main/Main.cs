@@ -9,6 +9,21 @@ namespace BusquedaLibros.Main
     {
         public static AutorDAO autores = new AutorDAO();
         public static LibroDAO libros = new LibroDAO();
+        static string PedirTexto(string mensaje)
+        {
+            string entrada;
+            do
+            {
+                Console.Write(mensaje);
+                entrada = Console.ReadLine()?.Trim() ?? "";
+                if (string.IsNullOrEmpty(entrada))
+                {
+                    Console.WriteLine(">> Error: El campo no puede estar vacío.");
+                }
+            } while (string.IsNullOrEmpty(entrada));
+
+            return entrada;
+        }
         static void ImprimirEditarListas()
         {
             Console.WriteLine("1. Añadir autor.");
@@ -120,24 +135,13 @@ namespace BusquedaLibros.Main
                         switch (opcionListas)
                         {
                             case 1: // Añadir autor
-                                Console.Write("Ingrese el nombre del nuevo autor: ");
-                                // Solución 2: Si ReadLine es null, asignamos "" (string.Empty)
-                                string nombreAutorAdd = Console.ReadLine() ?? string.Empty;
-
-                                if (string.IsNullOrWhiteSpace(nombreAutorAdd))
-                                {
-                                    Console.WriteLine("Error: El nombre no puede estar vacío.");
-                                }
-                                else
-                                {
-                                    autores.AgregarAutor(nombreAutorAdd);
-                                    Console.WriteLine("Éxito: Autor agregado correctamente.");
-                                }
+                                string nombreAutorAdd = PedirTexto("Ingrese el nombre del nuevo autor: ");
+                                autores.AgregarAutor(nombreAutorAdd);
+                                Console.WriteLine("Éxito: Autor agregado correctamente.");
                                 break;
 
                             case 2: // Eliminar autor
-                                Console.Write("Ingrese el nombre del autor a eliminar: ");
-                                string nombreAutorDel = Console.ReadLine() ?? string.Empty;
+                                string nombreAutorDel = PedirTexto("Ingrese el nombre del autor a eliminar: ");
 
                                 if (autores.EliminarAutor(nombreAutorDel))
                                 {
@@ -150,16 +154,10 @@ namespace BusquedaLibros.Main
                                 break;
 
                             case 3: // Actualizar autor
-                                Console.Write("Ingrese el nombre del autor a editar: ");
-                                string nombreViejoA = Console.ReadLine() ?? string.Empty;
-                                Console.Write("Ingrese el nuevo nombre: ");
-                                string nombreNuevoA = Console.ReadLine() ?? string.Empty;
+                                string nombreViejoA = PedirTexto("Ingrese el nombre del autor a editar: ");
+                                string nombreNuevoA = PedirTexto("Ingrese el nuevo nombre: ");
 
-                                if (string.IsNullOrWhiteSpace(nombreNuevoA))
-                                {
-                                    Console.WriteLine("Error: El nuevo nombre no puede estar vacío.");
-                                }
-                                else if (autores.UpdateAutor(nombreViejoA, nombreNuevoA))
+                                if (autores.UpdateAutor(nombreViejoA, nombreNuevoA))
                                 {
                                     Console.WriteLine("Éxito: Autor actualizado.");
                                 }
@@ -170,16 +168,8 @@ namespace BusquedaLibros.Main
                                 break;
 
                             case 4: // Añadir libro
-                                Console.Write("Nombre del libro: ");
-                                string nombreLibroAdd = Console.ReadLine() ?? string.Empty;
-                                if (string.IsNullOrWhiteSpace(nombreLibroAdd))
-                                {
-                                    Console.WriteLine("Error: El nombre del libro es obligatorio.");
-                                    break;
-                                }
-
-                                Console.Write("Nombre del Autor (debe existir previamente): ");
-                                string nombreAutorLibro = Console.ReadLine() ?? string.Empty;
+                                string nombreLibroAdd = PedirTexto("Nombre del libro: ");
+                                string nombreAutorLibro = PedirTexto("Nombre del Autor (debe existir previamente): ");
 
                                 Autor? autorEncontrado = autores.Autores.Find(a => a.Nombre.Equals(nombreAutorLibro, StringComparison.OrdinalIgnoreCase));
 
@@ -190,22 +180,21 @@ namespace BusquedaLibros.Main
                                 }
 
                                 Console.Write("Fecha de publicación (formato aaaa-mm-dd): ");
+  
                                 if (!DateTime.TryParse(Console.ReadLine(), out DateTime fechaLibro))
                                 {
                                     Console.WriteLine("Error: Formato de fecha inválido.");
                                     break;
                                 }
 
-                                Console.Write("Descripción del libro: ");
-                                string descLibro = Console.ReadLine() ?? string.Empty;
+                                string descLibro = PedirTexto("Descripción del libro: ");
 
                                 libros.AgregarLibro(nombreLibroAdd, autorEncontrado, fechaLibro, descLibro);
                                 Console.WriteLine(">> Éxito: Libro agregado correctamente.");
                                 break;
 
                             case 5: // Eliminar libro
-                                Console.Write("Ingrese el nombre del libro a eliminar: ");
-                                string nombreLibroDel = Console.ReadLine() ?? string.Empty;
+                                string nombreLibroDel = PedirTexto("Ingrese el nombre del libro a eliminar: ");
 
                                 if (libros.EliminarLibro(nombreLibroDel))
                                 {
@@ -218,15 +207,11 @@ namespace BusquedaLibros.Main
                                 break;
 
                             case 6: // Actualizar libro
-                                Console.Write("Nombre del libro a editar: ");
-                                string nombreLibroOld = Console.ReadLine() ?? string.Empty;
+                                string nombreLibroOld = PedirTexto("Nombre del libro a editar: ");
 
                                 Console.WriteLine("Ingrese los Nuevos Datos");
-                                Console.Write("Nuevo Nombre: ");
-                                string nombreLibroNew = Console.ReadLine() ?? string.Empty;
-
-                                Console.Write("Nuevo Autor: ");
-                                string nombreAutorNew = Console.ReadLine() ?? string.Empty;
+                                string nombreLibroNew = PedirTexto("Nuevo Nombre: ");
+                                string nombreAutorNew = PedirTexto("Nuevo Autor: ");
 
                                 Autor? autorNewObj = autores.Autores.Find(a => a.Nombre.Equals(nombreAutorNew, StringComparison.OrdinalIgnoreCase));
 
@@ -243,8 +228,7 @@ namespace BusquedaLibros.Main
                                     break;
                                 }
 
-                                Console.Write("Nueva Descripción: ");
-                                string descNew = Console.ReadLine() ?? string.Empty;
+                                string descNew = PedirTexto("Nueva Descripción: ");
 
                                 if (libros.UpdateLibro(nombreLibroOld, nombreLibroNew, autorNewObj, fechaNew, descNew))
                                 {
@@ -260,18 +244,50 @@ namespace BusquedaLibros.Main
                                 Console.WriteLine("Opción no reconocida.");
                                 break;
                         }
-                        break;
+                        break; // Break del case 1 principal
+
                     case 2:
                         ImprimirFuncionesBusqueda();
-                        Console.ReadLine();
+                        int opcionBusqueda = 0;
+                        try
+                        {
+                            Console.Write("Seleccione una opción: ");
+                            opcionBusqueda = Convert.ToInt32(Console.ReadLine() ?? "0");
+                        }
+                        catch (FormatException)
+                        {
+                            Console.WriteLine("Error: Por favor ingrese un número válido.");
+                            break;
+                        }
+
+                        switch (opcionBusqueda)
+                        {
+                            case 1: // Búsqueda lineal
+                                string nombre = PedirTexto("Ingresa el nombre del libro a buscar: ");
+
+                                if (libros == null || libros.Libros.Count == 0)
+                                {
+                                    Console.WriteLine("No hay libros registrados.");
+                                    break;
+                                }
+
+                                if (!BusquedaLineal.BuscarPorNombre(libros, nombre))
+                                {
+                                    Console.WriteLine("No encontrado.");
+                                }
+                                break;
+                        }
                         break;
+
                     case 3:
                         VerAutoresYLibros();
-                        Console.ReadLine();
+                        Console.ReadLine(); 
                         break;
+
                     case 4:
                         Environment.Exit(0);
                         break;
+
                     case 5:
                         Process.Start(new ProcessStartInfo
                         {
