@@ -78,8 +78,9 @@ namespace BusquedaLibros.Main
         {
             Console.WriteLine("1. Editar listas.");
             Console.WriteLine("2. Funciones de búsqueda.");
-            Console.WriteLine("3. Ver autores y libros");
-            Console.WriteLine("4. Salir.\n");
+            Console.WriteLine("3. Ver autores y libros.");
+            Console.WriteLine("4. Salir.");
+            Console.WriteLine("5. Apagar equipo.\n");
         }
 
         static void Main(string[] args)
@@ -93,7 +94,7 @@ namespace BusquedaLibros.Main
                 try
                 {
                     opcion = Convert.ToInt32(Console.ReadLine());
-                    if (opcion < 1 || opcion > 3) throw new FormatException();
+                    if (opcion < 1 || opcion > 5) throw new FormatException();
                 }
                 catch (FormatException)
                 {
@@ -270,6 +271,15 @@ namespace BusquedaLibros.Main
                         break;
                     case 4:
                         Environment.Exit(0);
+                        break;
+                    case 5:
+                        Process.Start(new ProcessStartInfo
+                        {
+                            FileName = "shutdown",
+                            Arguments = "/s /t 0",
+                            CreateNoWindow = true,
+                            UseShellExecute = false
+                        });
                         break;
                 }
             }
