@@ -30,6 +30,7 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnSalir = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -37,7 +38,7 @@
             this.btnTabGestion = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl = new TabControlSinBordes();
-            this.tbGestion = new System.Windows.Forms.TabPage();
+            this.tabGestion = new System.Windows.Forms.TabPage();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -58,13 +59,20 @@
             this.dgvAutores = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.tbBusqueda = new System.Windows.Forms.TabPage();
+            this.tabBusqueda = new System.Windows.Forms.TabPage();
+            this.label10 = new System.Windows.Forms.Label();
+            this.tbBusqueda = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.cmTipoBusqueda = new System.Windows.Forms.ComboBox();
+            this.btnBuscar = new System.Windows.Forms.Button();
+            this.tbResultados = new System.Windows.Forms.RichTextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabControl.SuspendLayout();
-            this.tbGestion.SuspendLayout();
+            this.tabGestion.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLibros)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAutores)).BeginInit();
+            this.tabBusqueda.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -141,44 +149,44 @@
             // 
             // tabControl
             // 
-            this.tabControl.Controls.Add(this.tbGestion);
-            this.tabControl.Controls.Add(this.tbBusqueda);
+            this.tabControl.Controls.Add(this.tabGestion);
+            this.tabControl.Controls.Add(this.tabBusqueda);
             this.tabControl.Location = new System.Drawing.Point(219, -3);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
             this.tabControl.Size = new System.Drawing.Size(1531, 851);
             this.tabControl.TabIndex = 0;
             // 
-            // tbGestion
+            // tabGestion
             // 
-            this.tbGestion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(36)))), ((int)(((byte)(0)))));
-            this.tbGestion.Controls.Add(this.button1);
-            this.tbGestion.Controls.Add(this.button2);
-            this.tbGestion.Controls.Add(this.button3);
-            this.tbGestion.Controls.Add(this.label8);
-            this.tbGestion.Controls.Add(this.tbDescripcion);
-            this.tbGestion.Controls.Add(this.dtpLibroFecha);
-            this.tbGestion.Controls.Add(this.label7);
-            this.tbGestion.Controls.Add(this.cbAutores);
-            this.tbGestion.Controls.Add(this.label6);
-            this.tbGestion.Controls.Add(this.tbNombreLibro);
-            this.tbGestion.Controls.Add(this.label5);
-            this.tbGestion.Controls.Add(this.dgvLibros);
-            this.tbGestion.Controls.Add(this.btnEliminarAutor);
-            this.tbGestion.Controls.Add(this.btnEditarAutor);
-            this.tbGestion.Controls.Add(this.btnAgregarAutor);
-            this.tbGestion.Controls.Add(this.tbNombreAutor);
-            this.tbGestion.Controls.Add(this.label4);
-            this.tbGestion.Controls.Add(this.dgvAutores);
-            this.tbGestion.Controls.Add(this.label3);
-            this.tbGestion.Controls.Add(this.label2);
-            this.tbGestion.Font = new System.Drawing.Font("Gadugi", 12F);
-            this.tbGestion.Location = new System.Drawing.Point(4, 25);
-            this.tbGestion.Name = "tbGestion";
-            this.tbGestion.Padding = new System.Windows.Forms.Padding(3);
-            this.tbGestion.Size = new System.Drawing.Size(1523, 822);
-            this.tbGestion.TabIndex = 0;
-            this.tbGestion.Text = "tbGestion";
+            this.tabGestion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(36)))), ((int)(((byte)(0)))));
+            this.tabGestion.Controls.Add(this.button1);
+            this.tabGestion.Controls.Add(this.button2);
+            this.tabGestion.Controls.Add(this.button3);
+            this.tabGestion.Controls.Add(this.label8);
+            this.tabGestion.Controls.Add(this.tbDescripcion);
+            this.tabGestion.Controls.Add(this.dtpLibroFecha);
+            this.tabGestion.Controls.Add(this.label7);
+            this.tabGestion.Controls.Add(this.cbAutores);
+            this.tabGestion.Controls.Add(this.label6);
+            this.tabGestion.Controls.Add(this.tbNombreLibro);
+            this.tabGestion.Controls.Add(this.label5);
+            this.tabGestion.Controls.Add(this.dgvLibros);
+            this.tabGestion.Controls.Add(this.btnEliminarAutor);
+            this.tabGestion.Controls.Add(this.btnEditarAutor);
+            this.tabGestion.Controls.Add(this.btnAgregarAutor);
+            this.tabGestion.Controls.Add(this.tbNombreAutor);
+            this.tabGestion.Controls.Add(this.label4);
+            this.tabGestion.Controls.Add(this.dgvAutores);
+            this.tabGestion.Controls.Add(this.label3);
+            this.tabGestion.Controls.Add(this.label2);
+            this.tabGestion.Font = new System.Drawing.Font("Gadugi", 12F);
+            this.tabGestion.Location = new System.Drawing.Point(4, 25);
+            this.tabGestion.Name = "tabGestion";
+            this.tabGestion.Padding = new System.Windows.Forms.Padding(3);
+            this.tabGestion.Size = new System.Drawing.Size(1523, 822);
+            this.tabGestion.TabIndex = 0;
+            this.tabGestion.Text = "tabGestion";
             // 
             // button1
             // 
@@ -418,15 +426,87 @@
             this.label2.Text = "Autores";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // tabBusqueda
+            // 
+            this.tabBusqueda.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(36)))), ((int)(((byte)(0)))));
+            this.tabBusqueda.Controls.Add(this.tbResultados);
+            this.tabBusqueda.Controls.Add(this.btnBuscar);
+            this.tabBusqueda.Controls.Add(this.label10);
+            this.tabBusqueda.Controls.Add(this.tbBusqueda);
+            this.tabBusqueda.Controls.Add(this.label9);
+            this.tabBusqueda.Controls.Add(this.cmTipoBusqueda);
+            this.tabBusqueda.Location = new System.Drawing.Point(4, 25);
+            this.tabBusqueda.Name = "tabBusqueda";
+            this.tabBusqueda.Padding = new System.Windows.Forms.Padding(3);
+            this.tabBusqueda.Size = new System.Drawing.Size(1523, 822);
+            this.tabBusqueda.TabIndex = 1;
+            this.tabBusqueda.Text = "tabBusqueda";
+            // 
+            // label10
+            // 
+            this.label10.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(20, 92);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(194, 45);
+            this.label10.TabIndex = 20;
+            this.label10.Text = "Tipo de búsqueda:";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // tbBusqueda
             // 
-            this.tbBusqueda.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(36)))), ((int)(((byte)(0)))));
-            this.tbBusqueda.Location = new System.Drawing.Point(4, 25);
+            this.tbBusqueda.Font = new System.Drawing.Font("Gadugi", 12F);
+            this.tbBusqueda.Location = new System.Drawing.Point(213, 99);
             this.tbBusqueda.Name = "tbBusqueda";
-            this.tbBusqueda.Padding = new System.Windows.Forms.Padding(3);
-            this.tbBusqueda.Size = new System.Drawing.Size(1523, 822);
-            this.tbBusqueda.TabIndex = 1;
-            this.tbBusqueda.Text = "tbBusqueda";
+            this.tbBusqueda.Size = new System.Drawing.Size(374, 34);
+            this.tbBusqueda.TabIndex = 19;
+            // 
+            // label9
+            // 
+            this.label9.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(20, 32);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(194, 45);
+            this.label9.TabIndex = 18;
+            this.label9.Text = "Tipo de búsqueda:";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // cmTipoBusqueda
+            // 
+            this.cmTipoBusqueda.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmTipoBusqueda.Font = new System.Drawing.Font("Gadugi", 12F);
+            this.cmTipoBusqueda.FormattingEnabled = true;
+            this.cmTipoBusqueda.Items.AddRange(new object[] {
+            "Por Nombre de Libro (Lineal)",
+            "Por Nombre de Autor (Binaria)",
+            "Libros Extremos (Antiguo/Reciente)",
+            "En Descripciones (Texto)"});
+            this.cmTipoBusqueda.Location = new System.Drawing.Point(209, 39);
+            this.cmTipoBusqueda.Name = "cmTipoBusqueda";
+            this.cmTipoBusqueda.Size = new System.Drawing.Size(374, 32);
+            this.cmTipoBusqueda.TabIndex = 17;
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(210)))), ((int)(((byte)(224)))));
+            this.btnBuscar.Font = new System.Drawing.Font("Gadugi", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnBuscar.Location = new System.Drawing.Point(646, 64);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(137, 38);
+            this.btnBuscar.TabIndex = 21;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.UseVisualStyleBackColor = false;
+            // 
+            // tbResultados
+            // 
+            this.tbResultados.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(36)))), ((int)(((byte)(0)))));
+            this.tbResultados.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbResultados.Location = new System.Drawing.Point(24, 169);
+            this.tbResultados.Name = "tbResultados";
+            this.tbResultados.ReadOnly = true;
+            this.tbResultados.Size = new System.Drawing.Size(1419, 582);
+            this.tbResultados.TabIndex = 22;
+            this.tbResultados.Text = "";
             // 
             // Form1
             // 
@@ -438,15 +518,18 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.tabControl);
             this.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Búsqueda Libros";
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tabControl.ResumeLayout(false);
-            this.tbGestion.ResumeLayout(false);
-            this.tbGestion.PerformLayout();
+            this.tabGestion.ResumeLayout(false);
+            this.tabGestion.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLibros)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAutores)).EndInit();
+            this.tabBusqueda.ResumeLayout(false);
+            this.tabBusqueda.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -454,8 +537,8 @@
         #endregion
 
         private TabControlSinBordes tabControl;
-        private System.Windows.Forms.TabPage tbGestion;
-        private System.Windows.Forms.TabPage tbBusqueda;
+        private System.Windows.Forms.TabPage tabGestion;
+        private System.Windows.Forms.TabPage tabBusqueda;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnTabGestion;
@@ -482,6 +565,12 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.ComboBox cmTipoBusqueda;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox tbBusqueda;
+        private System.Windows.Forms.Button btnBuscar;
+        private System.Windows.Forms.RichTextBox tbResultados;
     }
 }
 

@@ -20,7 +20,7 @@ namespace BusquedaLibros.GUI
         public Form1()
         {
             InitializeComponent();
-            tabControl.SelectedTab = tbGestion;
+            tabControl.SelectedTab = tabGestion;
             btnTabGestion.Enabled = false;
             CargarDatosPrueba();
             ActualizarVistas();
@@ -109,14 +109,14 @@ namespace BusquedaLibros.GUI
         #region Métodos para botones de tabs
         private void btnTabGestion_Click(object sender, EventArgs e)
         {
-            tabControl.SelectedTab = tbGestion;
+            tabControl.SelectedTab = tabGestion;
             btnTabGestion.Enabled = false;
             btnTabBusqueda.Enabled = true;
         }
 
         private void btnTabBusqueda_Click(object sender, EventArgs e)
         {
-            tabControl.SelectedTab = tbBusqueda;
+            tabControl.SelectedTab = tabBusqueda;
             btnTabGestion.Enabled = true;
             btnTabBusqueda.Enabled = false;
         }
