@@ -1,61 +1,72 @@
-# Sistema de Búsqueda para Biblioteca Digital Estudiantil
+# Sistema de Gestión y Búsqueda de Libros
 
-Este repositorio contiene el prototipo inicial de un sistema de búsqueda para la **Biblioteca Digital Estudiantil**. El proyecto implementa algoritmos de búsqueda manuales en C# para localizar información eficiente sobre libros y autores, sirviendo como base para el aprendizaje de estructuras de datos y algoritmos.
+Este repositorio aloja una solución integral para la gestión bibliográfica estudiantil, implementando algoritmos de búsqueda y estructuras de datos fundamentales. El proyecto ahora cuenta con **dos interfaces de usuario**: una aplicación de consola clásica (Legacy) y una nueva interfaz gráfica moderna (Windows Forms).
 
-## Objetivos
+## Características Principales
 
-### Objetivo General
-Aplicar conceptos fundamentales de búsqueda en estructuras de datos mediante la implementación manual de algoritmos, fomentando el trabajo colaborativo y la documentación académica.
+### Nueva Interfaz Gráfica (GUI)
+El proyecto ha evolucionado para incluir una aplicación de escritorio basada en **Windows Forms (.NET Framework 4.7.2)** que ofrece:
+* **Gestión Visual (CRUD):** Tablas interactivas para agregar, editar y eliminar Libros y Autores.
+* **Pestañas de Navegación:** Separación clara entre la gestión de datos y las operaciones de búsqueda.
+* **Visualización de Resultados:** Cuadros de texto enriquecidos para mostrar detalles de las búsquedas.
+* **Controles Dinámicos:** Selección de autores mediante listas desplegables y calendarios para fechas.
 
-### Objetivos Específicos del Proyecto
-1. **Investigación y Diseño:** Comprender las diferencias y casos de uso entre búsqueda lineal y binaria.
-2. **Implementación Técnica:** Desarrollar un módulo de consola en C# que permita:
-   - Realizar búsquedas lineales en listas de objetos.
-   - Realizar búsquedas binarias en listas ordenadas.
-   - Analizar rangos de datos (búsqueda de máximos y mínimos).
-   - Buscar patrones de texto dentro de descripciones (búsqueda manual carácter por carácter).
-3. **Gestión de Datos:** Permitir la administración básica (CRUD) de Autores y Libros en memoria.
+### Versión de Consola (Legacy)
+Se conserva la versión original en **.NET 8.0** para fines educativos y de análisis de rendimiento, permitiendo la ejecución de los algoritmos en un entorno de texto puro.
 
-## Integrantes del equipo
+### Algoritmos Implementados
+El núcleo lógico del sistema aplica manualmente los siguientes algoritmos (sin depender de librerías de alto nivel para la búsqueda):
 
-* Roberto Fabio Tercero Membreño
+1.  **Búsqueda Lineal:** Localización secuencial de libros por título exacto.
+2.  **Búsqueda Binaria:** Localización eficiente de autores (requiere ordenamiento previo de la lista).
+3.  **Análisis de Extremos:** Algoritmo de recorrido único para identificar el libro más antiguo y el más reciente simultáneamente.
+4.  **Búsqueda de Texto (String Matching):** Algoritmo de fuerza bruta (carácter por carácter) para encontrar patrones dentro de las descripciones de los libros.
 
-## Instrucciones de uso
+## Estructura de la Solución
 
-### Requisitos previos
-* **SDK de .NET 8.0** o superior.
-* Visual Studio 2022 o VS Code.
+La solución `BusquedaLibros.sln` contiene dos proyectos independientes:
 
-### Ejecución
-1. Clona el repositorio o descarga el código fuente.
-2. Abre la solución `BusquedaLibros.sln` en Visual Studio.
-3. Compila y ejecuta el proyecto `BusquedaLibros`.
+| Proyecto | Tipo | Framework | Descripción |
+| :--- | :--- | :--- | :--- |
+| **`BusquedaLibros`** | Consola | .NET 8.0 | Prototipo inicial y lógica base. |
+| **`BusquedaLibros.GUI`** | WinForms | .NET Fx 4.7.2 | Interfaz gráfica de usuario final. |
 
-### Guía del Menú Principal
-Al iniciar, el sistema cargará automáticamente un set de datos de prueba (autores como Gabriel García Márquez, J.K. Rowling, etc.).
+## Requisitos Previos
 
-El sistema cuenta con las siguientes opciones numéricas:
+* **Visual Studio 2022** (Recomendado) o VS Code.
+* **SDK de .NET 8.0** (Para la consola).
+* **Herramientas de desarrollo de escritorio de .NET** (Para Windows Forms).
 
-**1. Editar listas**
-Permite gestionar la base de datos en memoria:
-* Añadir, eliminar o actualizar **Autores**.
-* Añadir, eliminar o actualizar **Libros** (requiere que el autor exista previamente).
+## Instrucciones de Ejecución
 
-**2. Funciones de búsqueda**
-Acceso a los algoritmos implementados:
-* **Búsqueda lineal:** Busca un libro por su nombre exacto recorriendo la lista secuencialmente.
-* **Búsqueda binaria:** Ordena la lista de autores y busca un nombre específico dividiendo el conjunto de datos (algoritmo manual).
-* **Libro más reciente/antiguo:** Recorre la lista para encontrar las fechas de publicación extremas (máximo y mínimo).
-* **Búsqueda en descripciones:** Algoritmo de coincidencia de texto (manual, sin usar `.Contains`) para encontrar palabras clave dentro de las sinopsis de los libros.
+1.  **Clonar el repositorio:**
+    ```bash
+    git clone https://github.com/robertofabiot/BusquedaLibros
+    ```
+2.  **Abrir la solución:** Ejecuta el archivo `BusquedaLibros.sln`.
 
-**3. Ver autores y libros**
-Imprime en consola el listado completo de autores y libros registrados actualmente en el sistema.
+### Cómo cambiar entre GUI y Consola
+En Visual Studio, el proyecto que se ejecuta al presionar `F5` es el que está marcado en **negrita**. Para cambiarlo:
 
-**4. Salir**
-Cierra la aplicación.
+1.  Haz clic derecho sobre el proyecto que deseas ejecutar (por ejemplo, `BusquedaLibros.GUI`).
+2.  Selecciona la opción **"Establecer como proyecto de inicio" (Set as Startup Project)**.
+3.  Presiona **Iniciar** o `F5`.
 
-**5. Apagar equipo**
-*(Precaución)* Ejecuta un comando del sistema para apagar el ordenador inmediatamente.
+## Guía de Uso (Interfaz Gráfica)
 
----
-*Proyecto desarrollado como parte del Caso de Estudio de Estructuras de Datos.*
+### Pestaña Gestión
+* **Autores:** Agrega autores primero. Puedes editarlos o eliminarlos seleccionándolos de la tabla superior.
+* **Libros:** Para agregar un libro, selecciona un autor existente del menú desplegable, llena los datos y haz clic en "Agregar".
+
+### Pestaña Búsqueda
+Selecciona el algoritmo deseado en el menú superior:
+1.  **Por Nombre de Libro:** Escribe el título exacto.
+2.  **Por Nombre de Autor:** Escribe el nombre (usa búsqueda binaria interna).
+3.  **Libros Extremos:** Muestra el libro más viejo y el más nuevo registrados.
+4.  **En Descripciones:** Escribe una palabra clave (ej. "magia") para buscar en las sinopsis.
+
+## Integrantes del Equipo
+
+* **Roberto Fabio Tercero Membreño**
+
+Proyecto desarrollado con fines académicos para la asignatura de Programación Estructurada.
