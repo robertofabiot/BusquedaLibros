@@ -52,6 +52,7 @@
     <Compile Include="DAO\AutorDAO.cs" />
     <Compile Include="DAO\LibroDAO.cs" />
     <Compile Include="Features\BusquedaBinaria.cs" />
+    <Compile Include="Features\BusquedaFechas.cs" />
     <Compile Include="Features\BusquedaLineal.cs" />
     <Compile Include="TabControlSinBordes.cs">
       <SubType>Component</SubType>
