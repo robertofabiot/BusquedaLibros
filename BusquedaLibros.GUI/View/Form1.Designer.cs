@@ -63,7 +63,7 @@
             this.label10 = new System.Windows.Forms.Label();
             this.tbBusqueda = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.cmTipoBusqueda = new System.Windows.Forms.ComboBox();
+            this.cbTipoBusqueda = new System.Windows.Forms.ComboBox();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.tbResultados = new System.Windows.Forms.RichTextBox();
             this.panel1.SuspendLayout();
@@ -434,7 +434,7 @@
             this.tabBusqueda.Controls.Add(this.label10);
             this.tabBusqueda.Controls.Add(this.tbBusqueda);
             this.tabBusqueda.Controls.Add(this.label9);
-            this.tabBusqueda.Controls.Add(this.cmTipoBusqueda);
+            this.tabBusqueda.Controls.Add(this.cbTipoBusqueda);
             this.tabBusqueda.Location = new System.Drawing.Point(4, 25);
             this.tabBusqueda.Name = "tabBusqueda";
             this.tabBusqueda.Padding = new System.Windows.Forms.Padding(3);
@@ -470,20 +470,20 @@
             this.label9.Text = "Tipo de búsqueda:";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // cmTipoBusqueda
+            // cbTipoBusqueda
             // 
-            this.cmTipoBusqueda.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmTipoBusqueda.Font = new System.Drawing.Font("Gadugi", 12F);
-            this.cmTipoBusqueda.FormattingEnabled = true;
-            this.cmTipoBusqueda.Items.AddRange(new object[] {
+            this.cbTipoBusqueda.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbTipoBusqueda.Font = new System.Drawing.Font("Gadugi", 12F);
+            this.cbTipoBusqueda.FormattingEnabled = true;
+            this.cbTipoBusqueda.Items.AddRange(new object[] {
             "Por Nombre de Libro (Lineal)",
             "Por Nombre de Autor (Binaria)",
             "Libros Extremos (Antiguo/Reciente)",
             "En Descripciones (Texto)"});
-            this.cmTipoBusqueda.Location = new System.Drawing.Point(209, 39);
-            this.cmTipoBusqueda.Name = "cmTipoBusqueda";
-            this.cmTipoBusqueda.Size = new System.Drawing.Size(374, 32);
-            this.cmTipoBusqueda.TabIndex = 17;
+            this.cbTipoBusqueda.Location = new System.Drawing.Point(209, 39);
+            this.cbTipoBusqueda.Name = "cbTipoBusqueda";
+            this.cbTipoBusqueda.Size = new System.Drawing.Size(374, 32);
+            this.cbTipoBusqueda.TabIndex = 17;
             // 
             // btnBuscar
             // 
@@ -565,7 +565,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.ComboBox cmTipoBusqueda;
+        private System.Windows.Forms.ComboBox cbTipoBusqueda;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox tbBusqueda;

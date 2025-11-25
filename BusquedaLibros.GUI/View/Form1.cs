@@ -104,6 +104,13 @@ namespace BusquedaLibros.GUI
             dtpLibroFecha.Value = DateTime.Now;
             nombreLibroSeleccionado = null;
         }
+        private void ImprimirLibro(Libro libro)
+        {
+            tbResultados.AppendText($"Título: {libro.Nombre}\n");
+            tbResultados.AppendText($"Autor: {(libro.Autor != null ? libro.Autor.Nombre : "Desconocido")}\n");
+            tbResultados.AppendText($"Fecha: {libro.FechaPublicacion.ToShortDateString()}\n");
+            tbResultados.AppendText($"Descripción: {libro.Descripcion}\n");
+        }
         #endregion
 
         #region Métodos para botones de tabs
@@ -279,6 +286,86 @@ namespace BusquedaLibros.GUI
         }
         #endregion
 
+        #region Métodos de búsqueda
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            tbResultados.Clear();
 
+            if (cbTipoBusqueda.SelectedIndex == -1)
+            {
+                MessageBox.Show("Seleccione un tipo de búsqueda.", "Mensaje del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            string tipo = cbTipoBusqueda.SelectedItem.ToString();
+            string termino = tbBusqueda.Text.Trim();
+
+            if (!tipo.Contains("Extremos") && string.IsNullOrEmpty(termino))
+            {
+                MessageBox.Show("Ingrese un término de búsqueda.", "Mensaje del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            // 3. Selección del algoritmo
+            switch (cbTipoBusqueda.SelectedIndex)
+            {
+                case 0: // Por Nombre de Libro (Lineal)
+                    Libro libroEnc = BusquedaLineal.BuscarPorNombre(libroDAO, termino);
+                    if (libroEnc != null)
+                    {
+                        ImprimirLibro(libroEnc);
+                    }
+                    else
+                    {
+                        tbResultados.Text = "No se encontró ningún libro con ese nombre exacto.";
+                    }
+                    break;
+
+                case 1: // Por Nombre de Autor (Binaria)
+                    Autor autorEnc = BusquedaBinaria.BuscarPorNombre(autorDAO, termino);
+                    if (autorEnc != null)
+                    {
+                        tbResultados.Text = $"AUTOR ENCONTRADO:\nNombre: {autorEnc.Nombre}";
+                    }
+                    else
+                    {
+                        tbResultados.Text = "Autor no encontrado (recuerde escribir el nombre completo).";
+                    }
+                    break;
+
+                case 2: // Libros Extremos
+                    var resultado = BusquedaFechas.BuscarExtremos(libroDAO);
+                    if (resultado != null)
+                    {
+                        tbResultados.AppendText("=== LIBRO MÁS ANTIGUO ===\n");
+                        ImprimirLibro(resultado.Value.antiguo);
+                        tbResultados.AppendText("\n=== LIBRO MÁS RECIENTE ===\n");
+                        ImprimirLibro(resultado.Value.reciente);
+                    }
+                    else
+                    {
+                        tbResultados.Text = "No hay libros registrados para analizar.";
+                    }
+                    break;
+
+                case 3: // En Descripciones
+                    List<Libro> coincidencias = BusquedaTexto.BuscarEnDescripciones(libroDAO, termino);
+                    if (coincidencias.Count > 0)
+                    {
+                        tbResultados.Text = $"Se encontraron {coincidencias.Count} coincidencias:\n\n";
+                        foreach (var lib in coincidencias)
+                        {
+                            ImprimirLibro(lib);
+                            tbResultados.AppendText("-------------------\n");
+                        }
+                    }
+                    else
+                    {
+                        tbResultados.Text = "No se encontraron coincidencias en las descripciones.";
+                    }
+                    break;
+            }
+        }
+        #endregion
     }
 }
