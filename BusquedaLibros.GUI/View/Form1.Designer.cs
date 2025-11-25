@@ -446,7 +446,9 @@
             // 
             this.tbResultados.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(36)))), ((int)(((byte)(0)))));
             this.tbResultados.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbResultados.Location = new System.Drawing.Point(24, 169);
+            this.tbResultados.Font = new System.Drawing.Font("Gadugi", 12F);
+            this.tbResultados.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.tbResultados.Location = new System.Drawing.Point(33, 176);
             this.tbResultados.Name = "tbResultados";
             this.tbResultados.ReadOnly = true;
             this.tbResultados.Size = new System.Drawing.Size(1419, 582);
