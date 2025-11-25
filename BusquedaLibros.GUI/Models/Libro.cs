@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace BusquedaLibros.GUI
+{ 
     public class Libro
     {
         public string Nombre { get; set; }

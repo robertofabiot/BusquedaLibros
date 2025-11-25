@@ -1,5 +1,4 @@
-﻿using BusquedaLibros.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace BusquedaLibros.GUI
