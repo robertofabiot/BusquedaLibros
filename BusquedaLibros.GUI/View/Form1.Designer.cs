@@ -60,12 +60,12 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tabBusqueda = new System.Windows.Forms.TabPage();
+            this.tbResultados = new System.Windows.Forms.RichTextBox();
+            this.btnBuscar = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.tbBusqueda = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.cbTipoBusqueda = new System.Windows.Forms.ComboBox();
-            this.btnBuscar = new System.Windows.Forms.Button();
-            this.tbResultados = new System.Windows.Forms.RichTextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabControl.SuspendLayout();
@@ -442,6 +442,30 @@
             this.tabBusqueda.TabIndex = 1;
             this.tabBusqueda.Text = "tabBusqueda";
             // 
+            // tbResultados
+            // 
+            this.tbResultados.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(36)))), ((int)(((byte)(0)))));
+            this.tbResultados.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbResultados.Location = new System.Drawing.Point(24, 169);
+            this.tbResultados.Name = "tbResultados";
+            this.tbResultados.ReadOnly = true;
+            this.tbResultados.Size = new System.Drawing.Size(1419, 582);
+            this.tbResultados.TabIndex = 22;
+            this.tbResultados.Text = "";
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(210)))), ((int)(((byte)(224)))));
+            this.btnBuscar.Font = new System.Drawing.Font("Gadugi", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnBuscar.Location = new System.Drawing.Point(646, 64);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(137, 38);
+            this.btnBuscar.TabIndex = 21;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.UseVisualStyleBackColor = false;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
             // label10
             // 
             this.label10.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -484,29 +508,6 @@
             this.cbTipoBusqueda.Name = "cbTipoBusqueda";
             this.cbTipoBusqueda.Size = new System.Drawing.Size(374, 32);
             this.cbTipoBusqueda.TabIndex = 17;
-            // 
-            // btnBuscar
-            // 
-            this.btnBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(210)))), ((int)(((byte)(224)))));
-            this.btnBuscar.Font = new System.Drawing.Font("Gadugi", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBuscar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnBuscar.Location = new System.Drawing.Point(646, 64);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(137, 38);
-            this.btnBuscar.TabIndex = 21;
-            this.btnBuscar.Text = "Buscar";
-            this.btnBuscar.UseVisualStyleBackColor = false;
-            // 
-            // tbResultados
-            // 
-            this.tbResultados.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(36)))), ((int)(((byte)(0)))));
-            this.tbResultados.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbResultados.Location = new System.Drawing.Point(24, 169);
-            this.tbResultados.Name = "tbResultados";
-            this.tbResultados.ReadOnly = true;
-            this.tbResultados.Size = new System.Drawing.Size(1419, 582);
-            this.tbResultados.TabIndex = 22;
-            this.tbResultados.Text = "";
             // 
             // Form1
             // 
