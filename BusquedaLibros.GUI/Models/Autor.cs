@@ -14,5 +14,9 @@ namespace BusquedaLibros.GUI
         {
             this.Nombre = nombre;
         }
+        public override string ToString()
+        {
+            return Nombre;
+        }
     }
 }

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnSalir = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -37,6 +38,18 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl = new TabControlSinBordes();
             this.tbGestion = new System.Windows.Forms.TabPage();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.tbDescripcion = new System.Windows.Forms.RichTextBox();
+            this.dtpLibroFecha = new System.Windows.Forms.DateTimePicker();
+            this.label7 = new System.Windows.Forms.Label();
+            this.cbAutores = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.tbNombreLibro = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.dgvLibros = new System.Windows.Forms.DataGridView();
             this.btnEliminarAutor = new System.Windows.Forms.Button();
             this.btnEditarAutor = new System.Windows.Forms.Button();
             this.btnAgregarAutor = new System.Windows.Forms.Button();
@@ -50,6 +63,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabControl.SuspendLayout();
             this.tbGestion.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLibros)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAutores)).BeginInit();
             this.SuspendLayout();
             // 
@@ -63,7 +77,7 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(-3, -3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(216, 620);
+            this.panel1.Size = new System.Drawing.Size(216, 903);
             this.panel1.TabIndex = 1;
             // 
             // btnSalir
@@ -100,6 +114,7 @@
             this.btnTabBusqueda.TabIndex = 2;
             this.btnTabBusqueda.Text = "Búsqueda";
             this.btnTabBusqueda.UseVisualStyleBackColor = false;
+            this.btnTabBusqueda.Click += new System.EventHandler(this.btnTabBusqueda_Click);
             // 
             // btnTabGestion
             // 
@@ -112,6 +127,7 @@
             this.btnTabGestion.TabIndex = 1;
             this.btnTabGestion.Text = "Gestión";
             this.btnTabGestion.UseVisualStyleBackColor = false;
+            this.btnTabGestion.Click += new System.EventHandler(this.btnTabGestion_Click);
             // 
             // label1
             // 
@@ -130,12 +146,24 @@
             this.tabControl.Location = new System.Drawing.Point(219, -3);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(891, 607);
+            this.tabControl.Size = new System.Drawing.Size(1531, 851);
             this.tabControl.TabIndex = 0;
             // 
             // tbGestion
             // 
             this.tbGestion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(36)))), ((int)(((byte)(0)))));
+            this.tbGestion.Controls.Add(this.button1);
+            this.tbGestion.Controls.Add(this.button2);
+            this.tbGestion.Controls.Add(this.button3);
+            this.tbGestion.Controls.Add(this.label8);
+            this.tbGestion.Controls.Add(this.tbDescripcion);
+            this.tbGestion.Controls.Add(this.dtpLibroFecha);
+            this.tbGestion.Controls.Add(this.label7);
+            this.tbGestion.Controls.Add(this.cbAutores);
+            this.tbGestion.Controls.Add(this.label6);
+            this.tbGestion.Controls.Add(this.tbNombreLibro);
+            this.tbGestion.Controls.Add(this.label5);
+            this.tbGestion.Controls.Add(this.dgvLibros);
             this.tbGestion.Controls.Add(this.btnEliminarAutor);
             this.tbGestion.Controls.Add(this.btnEditarAutor);
             this.tbGestion.Controls.Add(this.btnAgregarAutor);
@@ -148,9 +176,144 @@
             this.tbGestion.Location = new System.Drawing.Point(4, 25);
             this.tbGestion.Name = "tbGestion";
             this.tbGestion.Padding = new System.Windows.Forms.Padding(3);
-            this.tbGestion.Size = new System.Drawing.Size(883, 578);
+            this.tbGestion.Size = new System.Drawing.Size(1523, 822);
             this.tbGestion.TabIndex = 0;
             this.tbGestion.Text = "tbGestion";
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(210)))), ((int)(((byte)(224)))));
+            this.button1.Font = new System.Drawing.Font("Gadugi", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.button1.Location = new System.Drawing.Point(394, 751);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(137, 38);
+            this.button1.TabIndex = 23;
+            this.button1.Text = "Eliminar";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.btnEliminarLibro_Click);
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(210)))), ((int)(((byte)(224)))));
+            this.button2.Font = new System.Drawing.Font("Gadugi", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.button2.Location = new System.Drawing.Point(221, 751);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(137, 38);
+            this.button2.TabIndex = 22;
+            this.button2.Text = "Editar";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.btnEditarLibro_Click);
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(210)))), ((int)(((byte)(224)))));
+            this.button3.Font = new System.Drawing.Font("Gadugi", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.button3.Location = new System.Drawing.Point(55, 751);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(137, 38);
+            this.button3.TabIndex = 21;
+            this.button3.Text = "Agregar";
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.btnAgregarLibro_Click);
+            // 
+            // label8
+            // 
+            this.label8.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(14, 536);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(178, 45);
+            this.label8.TabIndex = 20;
+            this.label8.Text = "Descripción:";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // tbDescripcion
+            // 
+            this.tbDescripcion.Location = new System.Drawing.Point(209, 536);
+            this.tbDescripcion.Name = "tbDescripcion";
+            this.tbDescripcion.Size = new System.Drawing.Size(374, 189);
+            this.tbDescripcion.TabIndex = 19;
+            this.tbDescripcion.Text = "";
+            // 
+            // dtpLibroFecha
+            // 
+            this.dtpLibroFecha.Location = new System.Drawing.Point(207, 469);
+            this.dtpLibroFecha.Name = "dtpLibroFecha";
+            this.dtpLibroFecha.Size = new System.Drawing.Size(378, 34);
+            this.dtpLibroFecha.TabIndex = 18;
+            // 
+            // label7
+            // 
+            this.label7.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(23, 466);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(178, 45);
+            this.label7.TabIndex = 17;
+            this.label7.Text = "Fecha de salida:";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // cbAutores
+            // 
+            this.cbAutores.FormattingEnabled = true;
+            this.cbAutores.Location = new System.Drawing.Point(209, 409);
+            this.cbAutores.Name = "cbAutores";
+            this.cbAutores.Size = new System.Drawing.Size(374, 32);
+            this.cbAutores.TabIndex = 16;
+            // 
+            // label6
+            // 
+            this.label6.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(25, 402);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(178, 45);
+            this.label6.TabIndex = 15;
+            this.label6.Text = "Autor:";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // tbNombreLibro
+            // 
+            this.tbNombreLibro.Location = new System.Drawing.Point(209, 349);
+            this.tbNombreLibro.Name = "tbNombreLibro";
+            this.tbNombreLibro.Size = new System.Drawing.Size(376, 34);
+            this.tbNombreLibro.TabIndex = 14;
+            // 
+            // label5
+            // 
+            this.label5.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(25, 342);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(178, 45);
+            this.label5.TabIndex = 13;
+            this.label5.Text = "Título del libro:";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // dgvLibros
+            // 
+            this.dgvLibros.AllowUserToAddRows = false;
+            this.dgvLibros.AllowUserToDeleteRows = false;
+            this.dgvLibros.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgvLibros.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvLibros.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(210)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Gadugi", 12F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvLibros.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvLibros.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvLibros.Location = new System.Drawing.Point(639, 349);
+            this.dgvLibros.Name = "dgvLibros";
+            this.dgvLibros.ReadOnly = true;
+            this.dgvLibros.RowHeadersVisible = false;
+            this.dgvLibros.RowHeadersWidth = 51;
+            this.dgvLibros.RowTemplate.Height = 24;
+            this.dgvLibros.Size = new System.Drawing.Size(789, 376);
+            this.dgvLibros.TabIndex = 12;
+            this.dgvLibros.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLibros_CellClick);
             // 
             // btnEliminarAutor
             // 
@@ -212,15 +375,17 @@
             // 
             this.dgvAutores.AllowUserToAddRows = false;
             this.dgvAutores.AllowUserToDeleteRows = false;
+            this.dgvAutores.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgvAutores.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvAutores.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(210)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Gadugi", 12F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvAutores.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Gadugi", 12F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvAutores.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvAutores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAutores.ColumnHeadersVisible = false;
             this.dgvAutores.Location = new System.Drawing.Point(560, 12);
@@ -229,16 +394,16 @@
             this.dgvAutores.RowHeadersVisible = false;
             this.dgvAutores.RowHeadersWidth = 51;
             this.dgvAutores.RowTemplate.Height = 24;
-            this.dgvAutores.Size = new System.Drawing.Size(147, 219);
+            this.dgvAutores.Size = new System.Drawing.Size(385, 219);
             this.dgvAutores.TabIndex = 7;
             this.dgvAutores.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAutores_CellClick);
             // 
             // label3
             // 
             this.label3.Font = new System.Drawing.Font("Gadugi", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(15, 238);
+            this.label3.Location = new System.Drawing.Point(24, 290);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(105, 45);
+            this.label3.Size = new System.Drawing.Size(120, 45);
             this.label3.TabIndex = 6;
             this.label3.Text = "Libros";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -248,7 +413,7 @@
             this.label2.Font = new System.Drawing.Font("Gadugi", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(15, 12);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(105, 45);
+            this.label2.Size = new System.Drawing.Size(120, 45);
             this.label2.TabIndex = 5;
             this.label2.Text = "Autores";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -259,7 +424,7 @@
             this.tbBusqueda.Location = new System.Drawing.Point(4, 25);
             this.tbBusqueda.Name = "tbBusqueda";
             this.tbBusqueda.Padding = new System.Windows.Forms.Padding(3);
-            this.tbBusqueda.Size = new System.Drawing.Size(883, 578);
+            this.tbBusqueda.Size = new System.Drawing.Size(1523, 822);
             this.tbBusqueda.TabIndex = 1;
             this.tbBusqueda.Text = "tbBusqueda";
             // 
@@ -267,8 +432,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(36)))), ((int)(((byte)(0)))));
-            this.ClientSize = new System.Drawing.Size(1111, 616);
+            this.ClientSize = new System.Drawing.Size(1705, 827);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.tabControl);
             this.ForeColor = System.Drawing.SystemColors.ControlLight;
@@ -279,6 +445,7 @@
             this.tabControl.ResumeLayout(false);
             this.tbGestion.ResumeLayout(false);
             this.tbGestion.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLibros)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAutores)).EndInit();
             this.ResumeLayout(false);
 
@@ -303,6 +470,18 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnEditarAutor;
         private System.Windows.Forms.Button btnEliminarAutor;
+        private System.Windows.Forms.DataGridView dgvLibros;
+        private System.Windows.Forms.TextBox tbNombreLibro;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox cbAutores;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.DateTimePicker dtpLibroFecha;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.RichTextBox tbDescripcion;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
     }
 }
 
