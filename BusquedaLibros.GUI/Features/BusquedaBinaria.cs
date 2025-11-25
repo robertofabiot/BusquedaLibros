@@ -9,11 +9,10 @@ namespace BusquedaLibros.GUI
 {
     public class BusquedaBinaria
     {
-        public static bool BuscarPorNombre(AutorDAO autores, string nombre)
+        public static Autor BuscarPorNombre(AutorDAO autores, string nombre)
         {
             autores.Autores.Sort((x, y) => string.Compare(x.Nombre, y.Nombre, StringComparison.OrdinalIgnoreCase));
 
-            bool resultado = false;
             int inicio = 0;
             int fin = autores.Autores.Count - 1;
 
@@ -26,9 +25,7 @@ namespace BusquedaLibros.GUI
 
                 if (comparacion == 0)
                 {
-                    Console.WriteLine($"Encontrado en la posición {medio} (Lista ordenada)");
-                    resultado = true;
-                    break;
+                    return autores.Autores[medio];
                 }
                 else if (comparacion < 0)
                 {
@@ -40,7 +37,7 @@ namespace BusquedaLibros.GUI
                 }
             }
 
-            return resultado;
+            return null;
         }
     }
 }

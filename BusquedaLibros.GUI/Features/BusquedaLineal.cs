@@ -1,5 +1,4 @@
-﻿using BusquedaLibros.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,18 +8,16 @@ namespace BusquedaLibros.GUI
 {
     public class BusquedaLineal
     {
-        public static bool BuscarPorNombre(LibroDAO libros, string nombre)
+        public static Libro BuscarPorNombre(LibroDAO libros, string nombre)
         {
-            bool resultado = false;
             for (int i = 0; i < libros.Libros.Count; i++)
             {
                 if (libros.Libros[i].Nombre == nombre)
                 {
-                    Console.WriteLine($"Encontrado en la posición {i}");
-                    resultado = true;
+                    return libros.Libros[i];
                 }
             }
-            return resultado;
+            return null;
         }
     }
 }
