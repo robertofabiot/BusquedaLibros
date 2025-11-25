@@ -54,6 +54,7 @@
     <Compile Include="Features\BusquedaBinaria.cs" />
     <Compile Include="Features\BusquedaFechas.cs" />
     <Compile Include="Features\BusquedaLineal.cs" />
+    <Compile Include="Features\BusquedaTexto.cs" />
     <Compile Include="TabControlSinBordes.cs">
       <SubType>Component</SubType>
     </Compile>
