@@ -475,7 +475,7 @@
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(194, 45);
             this.label10.TabIndex = 20;
-            this.label10.Text = "Tipo de búsqueda:";
+            this.label10.Text = "Término a buscar:";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // tbBusqueda
