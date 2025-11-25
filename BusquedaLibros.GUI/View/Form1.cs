@@ -141,6 +141,20 @@ namespace BusquedaLibros.GUI
         }
         private void btnEliminarAutor_Click(object sender, EventArgs e)
         {
+            bool tieneLibros = false;
+            foreach (Libro libro in libroDAO.GetListaLibros())
+            {
+                if (libro.Autor != null && libro.Autor.Nombre == nombreAutorSeleccionado)
+                {
+                    tieneLibros = true;
+                    break;
+                }
+            }
+            if (tieneLibros)
+            {
+                MessageBox.Show("No se puede eliminar el autor porque tiene libros asociados.", "Mensaje del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             if (nombreAutorSeleccionado != null)
             {
                 autorDAO.EliminarAutor(nombreAutorSeleccionado);
@@ -152,7 +166,6 @@ namespace BusquedaLibros.GUI
                 MessageBox.Show("Seleccione un autor de la lista primero.", "Mensaje del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-
         private void btnEditarAutor_Click(object sender, EventArgs e)
         {
             if (nombreAutorSeleccionado != null && !string.IsNullOrEmpty(tbNombreAutor.Text))
